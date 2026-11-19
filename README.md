@@ -1,6 +1,6 @@
 # Centre for Advanced Studies (AKTU Lucknow) — Enterprise Educational ERP (`cas.erp`)
 
-> ### 💡 Why This Exists (The Problem Solved)
+> ###  Why This Exists (The Problem Solved)
 > **My institution had no centralized ERP system** — resulting in manual paperwork, fragmented academic records, and disconnected administrative operations.  
 > **I engineered this platform from scratch to solve that problem**: delivering a single, unified digital ERP that connects **students, faculty, staff, and administration** with automated admissions, dynamic timetables, balanced fee accounting, and tamper-evident QR credentials.
 
