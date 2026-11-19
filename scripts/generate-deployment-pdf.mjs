@@ -339,7 +339,7 @@ const htmlContent = `
     <div>
       <div class="brand-title">Centre for Advanced Studies (CAS)</div>
       <div class="brand-subtitle">Dr. A.P.J. Abdul Kalam Technical University, Lucknow (AKTU)</div>
-      <div class="brand-location">Sector-11, Jankipuram Vistar, Lucknow, Uttar Pradesh — 226031 • Official Portal: cas.res.in</div>
+      <div class="brand-location">Sector-11, Jankipuram Vistar, Lucknow, Uttar Pradesh — 226031 • CAS Main Portal: cas.res.in</div>
     </div>
     <div class="meta-badge">
       <div class="status-pill">● System Live &amp; Verified</div><br/>

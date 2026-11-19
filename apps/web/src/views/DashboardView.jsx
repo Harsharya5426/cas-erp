@@ -248,7 +248,7 @@ export const DashboardView = ({
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', fontSize: '0.74rem', color: 'var(--text-muted)' }}>
             <div><strong>Dean Academics:</strong> Dr. Anuj Kumar Sharma</div>
             <div><strong>Controller of Exams:</strong> Examination Cell</div>
-            <div><strong>Official Portal:</strong> cas.res.in</div>
+            <div><strong>CAS Main Portal:</strong> cas.res.in</div>
           </div>
         </div>
       </section>

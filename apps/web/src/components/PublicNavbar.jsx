@@ -125,7 +125,7 @@ export const PublicNavbar = ({
         { label: 'Alumni Network', href: 'https://cas.res.in/alumni.html' },
         { label: 'Innovation Gallery', href: 'https://cas.res.in/studentinno.html' },
         { label: 'AKTU One View / ERP Portal', href: 'https://erp.aktu.ac.in/' },
-        { label: 'Official Circulars & Notices', onClick: () => jumpTo('admissions-services') }
+        { label: 'Circulars & Notices', onClick: () => jumpTo('admissions-services') }
       ]
     },
     {
@@ -140,8 +140,8 @@ export const PublicNavbar = ({
       ? notices.map((n) => (lang === 'hi' && n.titleHi ? n.titleHi : n.title))
       : [
           'M.Tech & B.Tech Admissions Open for Session 2026–27 — Apply Online via CAS ERP',
-          'B.Tech 3rd Semester Official Timetable (w.e.f. 5th Oct 2026) Published',
-          'AKTU Lucknow Official Academic & Holiday Calendar 2026 Available for Download',
+          'B.Tech 3rd Semester Timetable (w.e.f. 5th Oct 2026) Published',
+          'AKTU Lucknow Academic & Holiday Calendar 2026 Available for Download',
           'NVIDIA DGX-2 High-Performance AI Supercomputing Lab Open for PG & Ph.D. Scholars'
         ];
 

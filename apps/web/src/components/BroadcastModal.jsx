@@ -40,7 +40,7 @@ export const BroadcastModal = ({ onClose }) => {
         <div className="modal-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <BellRing size={20} color="var(--warning)" />
-            <h3 style={{ margin: 0, fontSize: '1.05rem' }}>Publish Official Notice / Circular</h3>
+            <h3 style={{ margin: 0, fontSize: '1.05rem' }}>Publish Notice / Circular</h3>
           </div>
           <button type="button" onClick={onClose} className="btn btn-ghost btn-icon" aria-label="Close">
             <X size={18} />

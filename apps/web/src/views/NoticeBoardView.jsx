@@ -20,7 +20,7 @@ export const NoticeBoardView = ({ onOpenBroadcast }) => {
   return (
     <div className="page-wrapper">
       <PageHeader
-        title="Campus Broadcasts & Official Circulars"
+        title="Campus Broadcasts & Circulars"
         subtitle="Role-targeted bilingual notices persisted in MongoDB"
         actions={
           can('notifications', 'create') && (
@@ -39,7 +39,7 @@ export const NoticeBoardView = ({ onOpenBroadcast }) => {
       </div>
 
       {filtered.length === 0 ? (
-        <EmptyState title="No notices found" description="Official circulars matching your role will appear here." />
+        <EmptyState title="No notices found" description="Circulars matching your role will appear here." />
       ) : (
         <div className="card-grid-stagger" style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
           {filtered.map((n) => (

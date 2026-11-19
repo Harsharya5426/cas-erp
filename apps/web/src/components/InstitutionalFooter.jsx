@@ -170,7 +170,7 @@ export const InstitutionalFooter = ({ onNavigateSection, compact = false }) => {
               </li>
               <li>
                 <a href="https://cas.res.in/faculty.html" target="_blank" rel="noopener noreferrer" className="cas-footer-link">
-                  Official CAS Faculty Roster <ExternalLink size={11} />
+                  CAS Faculty Directory <ExternalLink size={11} />
                 </a>
               </li>
             </ul>
@@ -316,7 +316,7 @@ export const InstitutionalFooter = ({ onNavigateSection, compact = false }) => {
               <strong className="cas-developer-credit-name">TechnoCat Arya</strong>
             </span>
             <a href="https://cas.res.in/" target="_blank" rel="noopener noreferrer" className="cas-footer-link" style={{ fontSize: '0.74rem' }}>
-              Official Website
+              CAS Main Website (cas.res.in)
             </a>
             <a href="https://erp.aktu.ac.in/" target="_blank" rel="noopener noreferrer" className="cas-footer-link" style={{ fontSize: '0.74rem' }}>
               AKTU-SDC Portal

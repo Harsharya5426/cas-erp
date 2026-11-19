@@ -231,7 +231,7 @@ export const PublicPortalView = ({ onGoToLogin }) => {
               <Compass size={14} /> Explore Academic Schools
             </a>
             <a href="/docs/cas-timetable-2026-27.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm">
-              <FileText size={14} /> Official Timetable PDF <ExternalLink size={12} />
+              <FileText size={14} /> B.Tech Timetable PDF <ExternalLink size={12} />
             </a>
             <a href="/docs/aktu-holiday-calendar-2026.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm">
               <FileText size={14} /> AKTU Calendar 2026 PDF <ExternalLink size={12} />
@@ -269,7 +269,7 @@ export const PublicPortalView = ({ onGoToLogin }) => {
               </h2>
             </div>
             <span className="badge badge-success" style={{ fontSize: '0.68rem', letterSpacing: '0.04em' }}>
-              Official Research Hub Ordinance
+              Research Hub Ordinance
             </span>
           </div>
 
@@ -346,7 +346,7 @@ export const PublicPortalView = ({ onGoToLogin }) => {
               </h2>
             </div>
             <a href="https://cas.res.in/" target="_blank" rel="noopener noreferrer" className="cas-link" style={{ fontSize: '0.82rem' }}>
-              Explore Official Ordinances on cas.res.in <ExternalLink size={13} />
+              Explore Academic Ordinances on cas.res.in <ExternalLink size={13} />
             </a>
           </div>
 
@@ -419,7 +419,7 @@ export const PublicPortalView = ({ onGoToLogin }) => {
             <FacultyDirectoryGrid
               faculty={facultyList}
               title="Centre for Advanced Studies — Current Faculty"
-              subtitle="Official faculty roster verified from https://cas.res.in/faculty.html"
+              subtitle="Faculty directory verified from https://cas.res.in/faculty.html"
             />
           </div>
         )}

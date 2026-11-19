@@ -50,7 +50,7 @@ export const StudentIDCardModal = ({ student, onClose }) => {
               </a>
               <div>
                 <div style={{ fontSize: '0.82rem', fontWeight: 800 }}>CAS AKTU LUCKNOW</div>
-                <div style={{ fontSize: '0.62rem', color: '#C1DFF0' }}>OFFICIAL STUDENT PASS</div>
+                <div style={{ fontSize: '0.62rem', color: '#C1DFF0' }}>STUDENT PASS / ID</div>
               </div>
             </div>
 

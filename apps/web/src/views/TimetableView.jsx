@@ -86,7 +86,7 @@ export const TimetableView = () => {
     <div className="page-wrapper">
       <PageHeader
         title="CAS Timetable & AKTU Academic Calendar (2026–27)"
-        subtitle="Official B.Tech 3rd Semester timetables (w.e.f. 5th Oct 2026), AKTU 2026 Holiday Calendar, embedded PDFs & live clash-checked scheduler"
+        subtitle="B.Tech 3rd Semester timetables (w.e.f. 5th Oct 2026), AKTU 2026 Holiday Calendar, embedded PDFs & live clash-checked scheduler"
         actions={
           <div style={{ display: 'flex', gap: '0.45rem', flexWrap: 'wrap' }}>
             <button
@@ -94,7 +94,7 @@ export const TimetableView = () => {
               className={`btn btn-sm ${activeTab === 'officialTimetable' ? 'btn-primary' : 'btn-secondary'}`}
               onClick={() => setActiveTab('officialTimetable')}
             >
-              <Calendar size={14} /> Official Timetable
+              <Calendar size={14} /> B.Tech Timetable
             </button>
             <button
               type="button"
@@ -288,7 +288,7 @@ export const TimetableView = () => {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
             <div>
               <h2 style={{ fontSize: '1.1rem', marginBottom: '0.2rem' }}>
-                AKTU Lucknow Official Academic & Holiday Calendar — 2026
+                AKTU Lucknow Academic & Holiday Calendar — 2026
               </h2>
               <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
                 Letter No.: <strong>{AKTU_HOLIDAY_CALENDAR_2026.letterNo}</strong> • Issued: {AKTU_HOLIDAY_CALENDAR_2026.issuedDate} • {AKTU_HOLIDAY_CALENDAR_2026.signatory}
@@ -378,7 +378,7 @@ export const TimetableView = () => {
 
           <div style={{ padding: '0.85rem 1rem', borderRadius: 'var(--radius-md)', background: 'var(--bg-tertiary)', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
             <strong style={{ display: 'block', marginBottom: '0.35rem', color: 'var(--text-primary)' }}>
-              Official AKTU Registrar Notes:
+              AKTU Registrar Notes:
             </strong>
             <ul style={{ paddingLeft: '1.2rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
               {AKTU_HOLIDAY_CALENDAR_2026.notes.map((n, idx) => (

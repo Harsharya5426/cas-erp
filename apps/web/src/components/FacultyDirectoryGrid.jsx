@@ -12,7 +12,7 @@ import {
 
 export const FacultyDirectoryGrid = ({
   faculty = [],
-  title = 'CAS Official Faculty Directory',
+  title = 'CAS Faculty Directory',
   subtitle = 'Verified current faculty roster from cas.res.in/faculty.html',
   compact = false
 }) => {

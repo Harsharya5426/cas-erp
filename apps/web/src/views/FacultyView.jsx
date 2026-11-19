@@ -45,7 +45,7 @@ export const FacultyView = ({ onOpenAddFaculty }) => {
     <div className="page-wrapper">
       <PageHeader
         title="CAS Faculty Directory, Staff HR & Payroll"
-        subtitle="Official CAS AKTU faculty profiles from cas.res.in/faculty.html, employee records, and dual-control payroll"
+        subtitle="CAS AKTU faculty profiles from cas.res.in/faculty.html, employee records, and dual-control payroll"
         actions={
           can('faculty', 'create') && (
             <button type="button" onClick={onOpenAddFaculty} className="btn btn-primary btn-sm">
