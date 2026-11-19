@@ -13,6 +13,7 @@ import {
   Sun,
   Languages,
   ShieldCheck,
+  ShieldAlert,
   Globe,
   Sparkles
 } from 'lucide-react';
@@ -234,6 +235,33 @@ export const LoginView = ({ onOpenPublicPortal }) => {
             {t('auth.title')}
           </h2>
           <div className="aktu-login-univ">{t('auth.subtitle')}</div>
+        </div>
+
+        {/* Security Notice: Do not use official passwords */}
+        <div
+          role="note"
+          style={{
+            background: 'var(--warning-bg)',
+            color: 'var(--warning)',
+            border: '1.5px solid var(--warning-border)',
+            borderRadius: 'var(--radius-md)',
+            padding: '0.7rem 0.9rem',
+            marginBottom: '1.1rem',
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '0.6rem',
+            fontSize: '0.8rem',
+            lineHeight: 1.45,
+            textAlign: 'left'
+          }}
+        >
+          <ShieldAlert size={18} style={{ flexShrink: 0, marginTop: '2px', color: 'var(--warning)' }} />
+          <div>
+            <strong style={{ display: 'block', fontSize: '0.82rem', marginBottom: '2px', color: 'var(--warning)' }}>
+              Security Notice
+            </strong>
+            Do not use your official or personal email passwords to log in to this website. Use only your designated CAS ERP portal credentials (e.g., demo password: <code style={{ fontFamily: 'var(--font-mono)', fontWeight: 700 }}>CasErp@2026!</code>).
+          </div>
         </div>
 
         {error && (

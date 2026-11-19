@@ -106,6 +106,10 @@
   --accent-secondary: #0b5e7e;
   --accent-soft: #d3e5f0;
 
+  --warning: #92400e;
+  --warning-bg: #fef3c7;
+  --warning-border: #fcd34d;
+
   --accent-glow: rgba(53, 135, 164, 0.18);
   --shadow-sm: 0 1px 2px 0 rgba(13, 37, 49, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(13, 37, 49, 0.08), 0 2px 4px -2px rgba(13, 37, 49, 0.04);
