@@ -16,6 +16,8 @@ services:
         generateValue: true
       - key: JWT_REFRESH_SECRET
         generateValue: true
+      - key: FIELD_ENCRYPTION_KEY
+        generateValue: true
       - key: APP_ORIGIN
         sync: false
       - key: CORS_ORIGINS

@@ -5,8 +5,25 @@ import { logger } from './core/logger.js';
 import { ensureBaselineSeed } from './scripts/seed.js';
 
 async function bootstrap() {
-  await connectDatabase(env.MONGODB_URI);
-  await ensureBaselineSeed();
+  if (
+    env.NODE_ENV === 'production' &&
+    (env.MONGODB_URI.includes('127.0.0.1') || env.MONGODB_URI.includes('localhost'))
+  ) {
+    logger.warn(
+      'MONGODB_URI is pointing to localhost in production. Please set MONGODB_URI in your Render Environment Variables to your MongoDB Atlas connection string (e.g. mongodb+srv://...).'
+    );
+  }
+
+  try {
+    await connectDatabase(env.MONGODB_URI);
+    await ensureBaselineSeed();
+  } catch (err: any) {
+    logger.error(
+      { err: err?.message || err },
+      'Failed to connect to MongoDB database. Please verify MONGODB_URI in your hosting environment variables.'
+    );
+    throw err;
+  }
 
   const app = createApp();
   const server = app.listen(env.PORT, () => {
