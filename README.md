@@ -1,7 +1,8 @@
 # Centre for Advanced Studies (AKTU Lucknow) — Enterprise Educational ERP (`cas.erp`)
 
-> **Creator's Note & Project Mission**:  
-> *I built and engineered this comprehensive ERP system to solve the critical absence of a unified, modern ERP portal in my institution — directly empowering our students, staff, faculty, and administrative leadership with automated academic workflows, transparent digital admissions, attendance tracking, balanced fee accounting, and tamper-evident credentials.*
+> ### 💡 Why This Exists (The Problem Solved)
+> **My institution had no centralized ERP system** — resulting in manual paperwork, fragmented academic records, and disconnected administrative operations.  
+> **I engineered this platform from scratch to solve that problem**: delivering a single, unified digital ERP that connects **students, faculty, staff, and administration** with automated admissions, dynamic timetables, balanced fee accounting, and tamper-evident QR credentials.
 
 A secure, bilingual (**English / हिन्दी**), WCAG 2.2 AA accessible, audit-logged educational ERP built on the **MERN stack** (**MongoDB Atlas, Express 5, React 18, Node.js**) with TypeScript, role-based access control (RBAC), and automated disaster recovery.
 
