@@ -1,0 +1,64 @@
+name: CAS ERP DevSecOps CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:8.0
+        ports:
+          - 27017:27017
+    env:
+      NODE_ENV: test
+      MONGODB_URI: mongodb://127.0.0.1:27017/cas_erp_ci
+      JWT_ACCESS_SECRET: ci_only_access_secret_key_min_32_characters_long
+      JWT_REFRESH_SECRET: ci_only_refresh_secret_key_min_32_characters_long
+      FIELD_ENCRYPTION_KEY: ci_only_field_encryption_key_32_bytes_min
+      CASHFREE_WEBHOOK_SECRET: ci_only_cashfree_webhook_secret
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Dependency vulnerability check
+        run: npm audit --audit-level=high
+
+      - name: Static lint and TypeScript checks
+        run: |
+          npm run lint
+          npm run typecheck
+
+      - name: Build shared, API, and web bundles
+        run: npm run build
+
+      - name: Unit & API integration tests
+        run: npm test
+
+      - name: Seed & verify backup/restore DR drill
+        run: |
+          npm run seed
+          npm run verify:dr
+
+      - name: Install Playwright browsers & run E2E + WCAG 2.2 AA accessibility tests
+        run: |
+          npx playwright install --with-deps chromium
+          npm run test:e2e
+
+      - name: Secret scan (Gitleaks)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

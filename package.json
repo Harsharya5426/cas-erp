@@ -1,0 +1,31 @@
+{
+  "name": "cas-erp-monorepo",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Centre for Advanced Studies (AKTU Lucknow) — Production MERN ERP",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n API,WEB -c cyan,green \"npm run dev --workspace=@cas-erp/api\" \"npm run dev --workspace=@cas-erp/web\"",
+    "dev:api": "npm run dev --workspace=@cas-erp/api",
+    "dev:web": "npm run dev --workspace=@cas-erp/web",
+    "build": "npm run build --workspace=@cas-erp/shared && npm run build --workspace=@cas-erp/api && npm run build --workspace=@cas-erp/web",
+    "typecheck": "npm run typecheck --workspace=@cas-erp/shared && npm run typecheck --workspace=@cas-erp/api",
+    "lint": "oxlint apps/web/src apps/api/src packages/shared/src",
+    "test": "npm run test --workspace=@cas-erp/shared && npm run test --workspace=@cas-erp/api",
+    "test:e2e": "playwright test",
+    "seed": "npm run seed --workspace=@cas-erp/api",
+    "verify:dr": "node scripts/verify-backup-restore.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.52.0",
+    "concurrently": "^9.1.2",
+    "oxlint": "^1.81.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vitest": "^5.1.0"
+  }
+}

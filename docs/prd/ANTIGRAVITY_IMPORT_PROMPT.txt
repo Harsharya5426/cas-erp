@@ -1,0 +1,1 @@
+Read README_IMPORT_FIRST.md and every Markdown document in this folder. Do not start coding yet. First produce the architecture, requirements traceability matrix, role-permission matrix, risk register, phased backlog, discovery questions and test strategy. Identify assumptions and request human approval before implementation.

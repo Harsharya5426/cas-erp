@@ -1,0 +1,30 @@
+{
+  "project": "Centre for Advanced Studies Educational ERP",
+  "institution": "Centre for Advanced Studies",
+  "format": "Markdown source package",
+  "document_count": 21,
+  "entrypoint": "18_Antigravity_Master_Build_Instructions.md",
+  "documents": [
+    "00_Project_Vision.md",
+    "01_Master_PRD.md",
+    "02_User_Roles_Permissions.md",
+    "03_UI_UX_PRD.md",
+    "04_Attendance_ML_PRD.md",
+    "05_Backend_API_PRD.md",
+    "06_Database_PRD.md",
+    "07_Integrations_PRD.md",
+    "08_Security_Privacy_PRD.md",
+    "09_Testing_DevSecOps_PRD.md",
+    "10_AWS_Deployment_DR_PRD.md",
+    "11_Data_Migration_PRD.md",
+    "12_Reporting_AI_PRD.md",
+    "13_Functional_Module_PRDs.md",
+    "14_Acceptance_Criteria.md",
+    "15_Open_Questions_and_Discovery.md",
+    "16_Risk_Register.md",
+    "17_Implementation_Roadmap.md",
+    "18_Antigravity_Master_Build_Instructions.md",
+    "19_Configuration_Checklist.md",
+    "README_IMPORT_FIRST.md"
+  ]
+}

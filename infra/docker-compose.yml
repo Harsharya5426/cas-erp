@@ -1,0 +1,48 @@
+services:
+  mongo:
+    image: mongo:8.0
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - cas_mongo_data:/data/db
+
+  ml:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.ml
+    environment:
+      ML_SERVICE_TOKEN: ${ML_SERVICE_TOKEN:-dev_only_internal_ml_token}
+    ports:
+      - "8001:8001"
+
+  api:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.api
+    depends_on:
+      - mongo
+      - ml
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: 4000
+      MONGODB_URI: mongodb://mongo:27017/cas_erp_dev
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-dev_only_cas_erp_access_secret_change_in_prod}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-dev_only_cas_erp_refresh_secret_change_in_prod}
+      ML_SERVICE_URL: http://ml:8001
+      ML_SERVICE_TOKEN: ${ML_SERVICE_TOKEN:-dev_only_internal_ml_token}
+    ports:
+      - "4000:4000"
+
+  web:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.web
+    depends_on:
+      - api
+    ports:
+      - "8080:80"
+
+volumes:
+  cas_mongo_data:
+
