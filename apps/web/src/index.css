@@ -92,10 +92,19 @@
   --border-subtle: #c3d9e8;
   --border-highlight: rgba(53, 135, 164, 0.6);
 
-  --text-primary: #0a1f2b;
-  --text-secondary: #2c4758;
-  --text-muted: #56768a;
+  --text-primary: #081721;
+  --text-secondary: #1a3648;
+  --text-muted: #385769;
   --text-inverse: #e4eef5;
+
+  /* High-Contrast Palette Overrides for Light Mode (eliminates washed out text) */
+  --palette-cyan: #0b5e7e;
+  --palette-ice: #1a4f66;
+  --palette-steel: #236780;
+  --palette-ocean: #1a6268;
+  --palette-jade: #1b6567;
+  --accent-secondary: #0b5e7e;
+  --accent-soft: #d3e5f0;
 
   --accent-glow: rgba(53, 135, 164, 0.18);
   --shadow-sm: 0 1px 2px 0 rgba(13, 37, 49, 0.05);
