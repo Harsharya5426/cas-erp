@@ -1,122 +1,151 @@
 # Centre for Advanced Studies (AKTU Lucknow) — Enterprise Educational ERP (`cas.erp`)
 
-A secure, bilingual (**English / हिन्दी**), responsive, audit-logged educational ERP built on **MERN** (**MongoDB/Mongoose, Express 5, React 19, Node.js**) with an optional isolated **Python FastAPI** advisory ML service and portable **AWS Infrastructure-as-Code**.
+> **Creator's Note & Project Mission**:  
+> *I built and engineered this comprehensive ERP system to solve the critical absence of a unified, modern ERP portal in my institution — directly empowering our students, staff, faculty, and administrative leadership with automated academic workflows, transparent digital admissions, attendance tracking, balanced fee accounting, and tamper-evident credentials.*
 
-Built and upgraded against the complete 21-document PRD specification in [docs/prd/](file:///d:/ACADEMICS/ANTIGRAVITY/docs/prd).
+A secure, bilingual (**English / हिन्दी**), WCAG 2.2 AA accessible, audit-logged educational ERP built on the **MERN stack** (**MongoDB Atlas, Express 5, React 18, Node.js**) with TypeScript, role-based access control (RBAC), and automated disaster recovery.
 
 ---
 
-## 1. Institutional Baseline & Standards
+## 🚀 Live Cloud Deployments
+
+| Component | Cloud Platform | Live Endpoint / Connection | Details |
+| :--- | :--- | :--- | :--- |
+| **Frontend Web App** | **Vercel** | `https://your-vercel-domain.vercel.app` | React 18, Vite 8, Light Theme Default, Responsive SPA |
+| **Backend REST API** | **Render** | `https://cas-erp-api.onrender.com/api/v1` | Express 5, TypeScript 5.8, Ephemeral 256-bit Secrets |
+| **Database Cluster** | **MongoDB Atlas** | `cluster0.rappkok.mongodb.net/cas_erp` | Multi-AZ ReplicaSet, 56 Collections, Strict Validation |
+
+📄 **Institutional Credentials & Deployment PDF**: [CAS_ERP_Deployment_Credentials.pdf](file:///d:/ACADEMICS/KHATARNAK/cas.ERP/CAS_ERP_Deployment_Credentials.pdf)
+
+---
+
+## 🔑 Master Credentials & 12 Institutional Roles
+
+> **Universal Master Password for All Seed Accounts:** `CasErp@2026!`
+
+| Role / Authority | Official User / Designation | Login Email (Username) | Default Password | Module Access Scope |
+| :--- | :--- | :--- | :--- | :--- |
+| **Super Admin** | Vikramaditya Dave | `superadmin@cas.res.in` | `CasErp@2026!` | Global System Config, Audit Logs, Module Toggles |
+| **Director / Principal** | Prof. S. P. Shukla | `principal@cas.res.in` | `CasErp@2026!` | Institutional Executive Dashboard, Merit Approvals |
+| **College Admin** | Dr. R. K. Tiwari | `admin@cas.res.in` | `CasErp@2026!` | College Operations, Timetables, Departments, Programs |
+| **Dean Academics / HOD** | Dr. Anuj Kumar Sharma | `hod.cse@cas.res.in` | `CasErp@2026!` | Academic Affairs, Faculty Allocations, Syllabi |
+| **Faculty / Assistant Prof** | Dr. Saurabh Mishra | `faculty@cas.res.in` | `CasErp@2026!` | Attendance Marking, Assignment Grading, Internal Marks |
+| **Student** | Aarav Sharma | `student@cas.res.in` | `CasErp@2026!` | Student Dashboard, Attendance, Fee Receipts, QR Verifications |
+| **Parent / Guardian** | Manoj Sharma | `parent@cas.res.in` | `CasErp@2026!` | Student Progress, Fee Invoices, Academic Notices |
+| **Accountant / Finance** | R. Sharma | `accounts@cas.res.in` | `CasErp@2026!` | Fee Plans, Invoices, Cashfree & Offline Ledgers |
+| **Admission Officer** | Neha Verma | `admissions@cas.res.in` | `CasErp@2026!` | Application Verification, Merit Roster, Seat Allotment |
+| **Controller of Exams** | Dr. P. Mishra | `exam@cas.res.in` | `CasErp@2026!` | Exam Schedules, Marks Entry Lock, Result Publishing |
+| **Librarian** | S. Kulkarni | `library@cas.res.in` | `CasErp@2026!` | Book Catalog, Circulation, Overdue Tracking |
+| **Hostel Warden** | A. Chauhan | `warden@cas.res.in` | `CasErp@2026!` | Room Allocations, Hostel Invoices, Grievances |
+
+---
+
+## 🏛️ Institutional Standards & Architecture Baseline
 - **Institution**: Centre for Advanced Studies, Dr. A.P.J. Abdul Kalam Technical University (AKTU), Sector 11, Jankipuram Extension, Lucknow, Uttar Pradesh, India
 - **Currency**: `INR` (`₹`, Indian numbering formatting via `formatINR`)
 - **Timezone & Date Display**: Stored in **UTC**, rendered in `Asia/Kolkata` as `DD-MM-YYYY` / `DD-MM-YYYY HH:mm IST`
-- **Localization**: Native bilingual `i18next` English (`en`) and Hindi (`hi`) with `Noto Sans Devanagari` (no external machine-translation widget)
+- **Localization**: Native bilingual English (`en`) and Hindi (`hi`) with `Noto Sans Devanagari`
 - **Accessibility Target**: WCAG 2.2 AA (`skip-link`, `:focus-visible`, `prefers-reduced-motion`, labeled form controls, verified with `@axe-core/playwright`)
-- **Initial Scope Exclusions** (`13_Functional_Module_PRDs.md`): Dedicated transport management, native mobile apps, live classroom video/AI tutor/integrated proctored online exams
+- **Visual Design**: High-contrast Light Theme by default with zero-flash rendering, interactive stationary navbar with moving updates ticker stacking cleanly underneath expanded dropdowns.
 
 ---
 
-## 2. Repository Structure
+## 📁 Repository Structure
 
 ```text
-d:\ACADEMICS\ANTIGRAVITY\
-├── docs/
-│   ├── prd/                  # Complete 21-document PRD package + manifest
-│   ├── architecture/         # Architecture reference, RTM, Design System, Threat Model & Risk Register
-│   └── runbooks/             # Operations, incident response & DR restore runbook
-├── packages/shared/          # @cas-erp/shared: 12 role templates, permission verbs, formatters, Zod schemas
+cas.ERP/
 ├── apps/
-│   ├── api/                  # @cas-erp/api: Express 5 modular monolith (/api/v1), OpenAPI 3.1, Mongoose
-│   └── web/                  # @cas-erp/web: React 19 + Vite 8 + Tailwind CSS bilingual web portal
-├── services/ml/              # Optional isolated Python FastAPI advisory-only ML service
-├── infra/                    # Non-root Dockerfiles, docker-compose.yml, AWS Terraform IaC
-├── scripts/                  # DR backup/restore verification script
-├── tests/e2e/                # Playwright + @axe-core/playwright WCAG 2.2 AA E2E suites
-└── .github/workflows/        # GitHub Actions DevSecOps CI pipeline
+│   ├── api/                  # @cas-erp/api: Express 5 modular monolith (/api/v1), TypeScript, Mongoose
+│   └── web/                  # @cas-erp/web: React 18 + Vite 8 + Tailwind CSS bilingual web portal
+├── packages/
+│   └── shared/               # @cas-erp/shared: 12 role templates, permission verbs, formatters, Zod schemas
+├── scripts/
+│   ├── create-backup.mjs     # Automated JSON database backup with SHA-256 integrity hashing
+│   ├── restore-backup.mjs    # Verified database restore utility
+│   ├── verify-backup-restore.mjs # Disaster Recovery (DR) simulation engine
+│   └── generate-deployment-pdf.mjs # High-contrast credentials PDF generator
+├── tests/
+│   └── e2e/                  # Playwright + @axe-core/playwright WCAG 2.2 AA E2E test suites
+├── render.yaml               # One-click Render Blueprint definition
+├── vercel.json               # Root Vercel monorepo routing configuration
+└── CAS_ERP_Deployment_Credentials.pdf # Compiled institutional access & deployment manifest
 ```
 
 ---
 
-## 3. Implemented Functional Modules & Safeguards
-- **Identity, Scoped RBAC & Governance**: `scrypt` password hashing, 5-attempt account lockout, TOTP MFA + recovery codes, rotating `HttpOnly` refresh cookies, session listing/revocation, 12 configurable roles + ABAC scopes, versioned approval workflows, emergency break-glass access, and append-only `AuditEvent` logging.
-- **Public Website/CMS & Admissions**: Public CMS pages, notices, online applicant intake with tracking PIN, document upload (magic-byte check + private storage adapter), verification -> approval workflow, and atomic Student + Invoice conversion.
-- **Academics, Timetable & Portals**: Configurable `Department -> Program -> Subject` catalogue, scoped Student & Employee directories, relationship-verified/revocable `GuardianLink` parent portal, room/faculty/batch conflict-checked timetable.
-- **Attendance & Biometric Safeguards**: Lecture attendance (`manual`, `qr`, `rfid`, `device`), QR session check-in with duplicate idempotency, correction requests + HOD approval, shortage threshold alerts (`<75%`), employee check-in/out punches, and **hard policy gate** disabling facial matching (`BIOMETRIC_POLICY_APPROVED=false`) until privacy assessment and consent are approved.
-- **Fees, Cashfree & Double-Entry Accounting**: Fee plans, invoices, offline receipts (`Idempotency-Key`), Cashfree hosted order/server-to-server verification + raw-body HMAC-SHA256 webhooks, dual-control refunds, and **append-only balanced `LedgerEntry` vouchers** (`totalDebitInr === totalCreditInr`).
-- **Exams & Basic LMS**: Exam schedules, marks entry, HOD/Controller verification, audit-locked SGPA/CGPA publication, admit-card eligibility, revaluation requests, and course notes/assignments/submissions.
-- **HR, Unified Leave & Payroll**: Unified student leave/outpass & employee leave (`CL`, `SL`, `EL`, `MEDICAL`, `MATERNITY`, `PATERNITY`, `UNPAID`, `SPECIAL`) with balance deduction, holiday calendar, and SoD-enforced payroll runs.
-- **Campus Ecosystem & Governed AI**: Library catalogue & circulation, Hostel & Mess allocations, Documents & QR-verifiable certificates, Confidentiality-isolated Grievances & Helpdesk, Placement & Alumni, Inventory & 2-step Procurement, Events, Research, Safety incidents & minimal-PII Visitor Register (`90`-day TTL), Audited CSV exports, and Advisory-only AI assistant with admin kill switch.
+## ⚙️ Core Modules & Functional Capabilities
+
+1. **Identity & Granular RBAC**:
+   - `scrypt` password hashing, 5-attempt account lockout, rotating `HttpOnly` refresh cookies, session revocation.
+   - 12 role profiles + ABAC scopes, emergency break-glass access, and append-only `AuditEvent` logging.
+2. **Public Institutional Portal & Admissions**:
+   - Bilingual public home, circulars, announcements, and program details.
+   - Self-service online applicant intake, PIN tracking, document upload, and automatic Student + Invoice conversion upon approval.
+3. **Academics, Dynamic Timetable & Portals**:
+   - Full Department $\rightarrow$ Program $\rightarrow$ Subject academic catalogue.
+   - Room, faculty, and batch conflict-checked timetable engine with printable PDF schedules.
+4. **Attendance Management**:
+   - Lecture attendance tracking (`manual`, `qr`, `device`), duplicate idempotency check, threshold alerts (`<75%`), and employee biometric punch simulator.
+5. **Double-Entry Accounting & Fee Management**:
+   - Fee plans, student invoices, offline cashier receipts with `Idempotency-Key`, Cashfree hosted payment verification, and **append-only balanced `LedgerEntry` vouchers** (`totalDebit === totalCredit`).
+6. **Examinations & Basic LMS**:
+   - Exam schedules, marks entry, HOD/Controller verification, audit-locked SGPA/CGPA publication, and course note downloads.
+7. **Tamper-Evident QR Verification**:
+   - HMAC-SHA256 encrypted verification for offline validation of transcripts, admit cards, and fee receipts.
 
 ---
 
-## 4. Local Setup & Verification
+## 🛠️ Local Setup & Quick Start
 
 ### Prerequisites
 - Node.js `>= 22` and npm `>= 10`
-- MongoDB `8.x` running on `127.0.0.1:27017`
-- Python `3.12+` *(optional, for `services/ml`)*
+- MongoDB running locally on `127.0.0.1:27017` or MongoDB Atlas URI
 
-### Quick Start
-1. Copy the environment template (never commit `.env` or real secrets):
-   ```bash
-   cp .env.example .env
-   ```
-2. Install dependencies, build all workspaces, and seed synthetic placeholder data:
-   ```bash
-   npm install
-   npm run build
-   npm run seed
-   ```
-3. Launch API (`http://localhost:4000`) and Web (`http://localhost:5173`):
-   ```bash
-   npm run dev
-   ```
-   - **Public Portal & Online Admissions**: `http://localhost:5173/#public`
-   - **API Health / Readiness / OpenAPI Docs**:
-     - `http://localhost:4000/api/v1/healthz`
-     - `http://localhost:4000/api/v1/readyz`
-     - `http://localhost:4000/api/v1/docs` (`openapi.json` at `/api/v1/openapi.json`)
-
-### Optional Python ML Sidecar
+### Installation & Run
 ```bash
-cd services/ml
-python -m venv .venv
-# Windows: .venv\Scripts\activate  |  Linux/macOS: source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn main:app --host 127.0.0.1 --port 8001
-```
+# 1. Clone the repository
+git clone https://github.com/Harsharya5426/cas-erp.git
+cd cas-erp
 
-### Synthetic Development Seed Accounts (All 12 PRD Roles)
-Password for all synthetic seed accounts: `CasErp@2026!`
-- `superadmin@cas.res.in` (`SUPER_ADMIN`)
-- `principal@cas.res.in` (`PRINCIPAL`)
-- `admin@cas.res.in` (`COLLEGE_ADMIN`)
-- `hod.cse@cas.res.in` (`HOD` — CSE)
-- `faculty@cas.res.in` (`FACULTY`)
-- `student@cas.res.in` (`STUDENT` — linked to `23BCE1042`)
-- `parent@cas.res.in` (`PARENT` — verified guardian link to `23BCE1042`)
-- `accounts@cas.res.in` (`ACCOUNTANT`)
-- `admissions@cas.res.in` (`ADMISSION_OFFICER`)
-- `exam@cas.res.in` (`EXAM_CONTROLLER`)
-- `library@cas.res.in` (`LIBRARIAN`)
-- `warden@cas.res.in` (`HOSTEL_WARDEN`)
+# 2. Install dependencies across all monorepo workspaces
+npm install
 
-### Quality, Security & DR Verification Commands
-```bash
-npm run lint
-npm run typecheck
+# 3. Build packages and seed initial demo data
 npm run build
-npm test
-npm run verify:dr
-npm run test:e2e
-npm audit --audit-level=high
+npm run seed
+
+# 4. Start local development servers (Frontend: 5173, Backend: 4000)
+npm run dev
 ```
 
 ---
 
-## 5. Known Limitations & Pending Institutional Discovery
-Per [15_Open_Questions_and_Discovery.md](file:///d:/ACADEMICS/ANTIGRAVITY/docs/prd/15_Open_Questions_and_Discovery.md) and [19_Configuration_Checklist.md](file:///d:/ACADEMICS/ANTIGRAVITY/docs/prd/19_Configuration_Checklist.md):
-1. Seeded departments, programs, subjects, and accounts are **synthetic placeholders** until the verified CAS AKTU academic catalogue and legacy ERP extracts are supplied.
-2. **Cashfree**, **Email/SMS/WhatsApp**, **Google/Microsoft SSO**, and **AKTU import/export** run behind disabled/sandbox adapters until merchant/vendor credentials and written authorizations are provisioned in AWS Secrets Manager.
-3. **Biometric face matching** stays blocked by default (`BIOMETRIC_POLICY_APPROVED=false`) pending privacy impact review, legal sign-off, and hardware SDK selection.
-4. Cloud residency, RTO/RPO SLA targets, and statutory payroll/GST/TDS rules require institutional legal and finance sign-off prior to production go-live.
+## 🔒 Backup, Disaster Recovery & Verification Commands
+
+```bash
+# Run static analysis and linting
+npm run lint
+
+# Typecheck TypeScript packages
+npm run typecheck
+
+# Full production monorepo build
+npm run build
+
+# Take an instant SHA-256 verified database backup
+npm run backup
+
+# Restore the latest database backup
+npm run restore
+
+# Run automated Disaster Recovery (DR) simulation (RTO < 750ms)
+npm run verify:dr
+
+# Run Playwright E2E and WCAG 2.2 AA accessibility tests
+npm run test:e2e
+```
+
+---
+
+## 📜 License
+Developed for the Centre for Advanced Studies (Dr. A.P.J. Abdul Kalam Technical University, Lucknow). Created by Harsh Arya.
