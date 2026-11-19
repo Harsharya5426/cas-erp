@@ -187,7 +187,7 @@ export async function seedFullSyntheticDataset(): Promise<void> {
           name: ru.name,
           passwordHash,
           status: 'active',
-          preferences: { theme: 'dark', accentColor: '#3587A4', language: 'en' }
+          preferences: { theme: 'light', accentColor: '#3587A4', language: 'en' }
         }
       },
       { upsert: true, new: true }
@@ -792,7 +792,7 @@ export async function seedFullSyntheticDataset(): Promise<void> {
           phone: s.phone,
           passwordHash,
           status: 'active',
-          preferences: { theme: 'dark', accentColor: '#3587A4', language: 'en' }
+          preferences: { theme: 'light', accentColor: '#3587A4', language: 'en' }
         }
       },
       { upsert: true, new: true }
@@ -854,7 +854,7 @@ export async function seedFullSyntheticDataset(): Promise<void> {
           phone: s.parentPhone,
           passwordHash,
           status: 'active',
-          preferences: { theme: 'dark', accentColor: '#3587A4', language: 'en' }
+          preferences: { theme: 'light', accentColor: '#3587A4', language: 'en' }
         }
       },
       { upsert: true, new: true }
@@ -986,7 +986,7 @@ export async function seedFullSyntheticDataset(): Promise<void> {
           phone: f.phone,
           passwordHash,
           status: 'active',
-          preferences: { theme: 'dark', accentColor: '#3587A4', language: 'en' }
+          preferences: { theme: 'light', accentColor: '#3587A4', language: 'en' }
         }
       },
       { upsert: true, new: true }
@@ -1769,7 +1769,7 @@ export async function seedFullSyntheticDataset(): Promise<void> {
           name: cf.name,
           passwordHash,
           status: 'active',
-          preferences: { theme: 'dark', accentColor: '#3587A4', language: 'en' }
+          preferences: { theme: 'light', accentColor: '#3587A4', language: 'en' }
         }
       },
       { upsert: true, new: true }

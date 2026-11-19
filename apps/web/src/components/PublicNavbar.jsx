@@ -256,7 +256,9 @@ export const PublicNavbar = ({
                   key={item.id}
                   className={`cas-pub-menu-item ${isOpen ? 'open' : ''}`}
                   onMouseEnter={() => {
-                    if (window.innerWidth > 960 && hasChildren) setOpenMenu(item.id);
+                    if (window.innerWidth > 960) {
+                      setOpenMenu(hasChildren ? item.id : null);
+                    }
                   }}
                   onMouseLeave={() => {
                     if (window.innerWidth > 960) setOpenMenu(null);

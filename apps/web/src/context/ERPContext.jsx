@@ -36,12 +36,12 @@ export const ERPProvider = ({ children }) => {
 
   const [themeMode, setThemeMode] = useState(() => {
     try {
-      const saved = window.localStorage.getItem('cas_erp_theme');
+      const saved = window.localStorage.getItem('cas_erp_theme_mode');
       if (saved === 'light' || saved === 'dark' || saved === 'system') return saved;
     } catch {
       // Ignore storage access errors
     }
-    return 'dark';
+    return 'light';
   });
   const [accentColor, setAccentColor] = useState('#3587A4');
   const [toasts, setToasts] = useState([]);
@@ -85,7 +85,7 @@ export const ERPProvider = ({ children }) => {
       document.documentElement.setAttribute('data-theme', resolved);
       document.documentElement.style.setProperty('--accent-primary', accentColor);
       try {
-        window.localStorage.setItem('cas_erp_theme', themeMode);
+        window.localStorage.setItem('cas_erp_theme_mode', themeMode);
       } catch {
         // Ignore storage errors
       }
@@ -157,7 +157,7 @@ export const ERPProvider = ({ children }) => {
       setCurrentUser(data.user);
       setAuthContext(data.auth);
       if (data.user?.preferences) {
-        setThemeMode(data.user.preferences.theme || 'dark');
+        setThemeMode(data.user.preferences.theme || 'light');
         setAccentColor(data.user.preferences.accentColor || '#3587A4');
         setLang(data.user.preferences.language || 'en');
       }

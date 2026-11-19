@@ -853,15 +853,18 @@ a {
   display: flex;
   align-items: center;
   height: 36px;
-  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.42s ease;
+  margin-top: 0;
+  transition: margin-top 0.38s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.38s ease;
 }
 
 @media (min-width: 961px) {
   .cas-pub-header-wrap.has-dropdown-open .cas-ticker-bar,
   .cas-pub-header-wrap:has(.cas-pub-menu-item:hover .cas-pub-dropdown) .cas-ticker-bar,
+  .cas-pub-header-wrap:has(.cas-pub-menu-item:focus-within .cas-pub-dropdown) .cas-ticker-bar,
+  .cas-pub-header-wrap:has(.cas-pub-dropdown:hover) .cas-ticker-bar,
   .cas-pub-header-wrap:has(.cas-pub-menu-item.open .cas-pub-dropdown) .cas-ticker-bar {
-    transform: translate3d(0, 310px, 0);
-    box-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.45);
+    margin-top: 345px;
+    box-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.25);
   }
 }
 

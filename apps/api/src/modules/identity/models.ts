@@ -49,7 +49,7 @@ const userSchema = new Schema<IUser>(
     lockedUntil: { type: Date, default: null },
     lastLoginAt: { type: Date, default: null },
     preferences: {
-      theme: { type: String, enum: ['dark', 'light', 'system'], default: 'dark' },
+      theme: { type: String, enum: ['dark', 'light', 'system'], default: 'light' },
       accentColor: { type: String, default: '#3587A4' },
       language: { type: String, enum: ['en', 'hi'], default: 'en' }
     },
