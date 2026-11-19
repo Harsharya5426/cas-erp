@@ -3,7 +3,7 @@ services:
     name: cas-erp-api
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build --workspace=@cas-erp/shared && npm run build --workspace=@cas-erp/api
+    buildCommand: npm install --include=dev && npm run build --workspace=@cas-erp/shared && npm run build --workspace=@cas-erp/api
     startCommand: npm run start --workspace=@cas-erp/api
     envVars:
       - key: NODE_ENV
