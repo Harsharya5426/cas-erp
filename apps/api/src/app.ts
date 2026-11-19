@@ -29,25 +29,10 @@ export function createApp() {
   app.use(httpLogger);
   app.use(helmet());
 
-  const allowedOrigins = env.CORS_ORIGINS.split(',').map((s) => s.trim()).filter(Boolean);
   app.use(
     cors({
-      origin: (origin, callback) => {
-        // Allow mobile apps, curl, server-to-server requests without origin
-        if (!origin) return callback(null, true);
-
-        // Always allow Vercel cloud deployments, Render, and localhost
-        if (
-          allowedOrigins.includes(origin) ||
-          origin.endsWith('.vercel.app') ||
-          origin.endsWith('.render.com') ||
-          origin.includes('localhost') ||
-          origin.includes('127.0.0.1')
-        ) {
-          return callback(null, true);
-        }
-
-        // Permissive fallback for custom institutional domains with logged notice
+      origin: (_origin, callback) => {
+        // Automatically allow requesting origin (Vercel, Render, local dev, custom domain) with credentials
         callback(null, true);
       },
       credentials: true,
@@ -68,11 +53,11 @@ export function createApp() {
 
   if (env.NODE_ENV !== 'test') {
     app.use(
-      '/api/v1/auth/login',
+      ['/api/v1/auth/login', '/auth/login'],
       rateLimit({ windowMs: 15 * 60_000, max: 30, standardHeaders: true, legacyHeaders: false })
     );
     app.use(
-      '/api/v1',
+      ['/api/v1', '/'],
       rateLimit({ windowMs: 60_000, max: 300, standardHeaders: true, legacyHeaders: false })
     );
   }
@@ -139,21 +124,26 @@ export function createApp() {
     });
   });
 
-  // Mount Domain Routers
-  app.use('/api/v1/public', publicRouter);
-  app.use('/api/v1/webhooks', webhooksRouter);
-  app.use('/api/v1/auth', authRouter);
-  app.use('/api/v1/rbac', rbacRouter);
-  app.use('/api/v1/org', orgRouter);
-  app.use('/api/v1/notifications', notificationsRouter);
-  app.use('/api/v1/academics', academicsRouter);
-  app.use('/api/v1/admissions', admissionsRouter);
-  app.use('/api/v1/attendance', attendanceRouter);
-  app.use('/api/v1/hr', hrRouter);
-  app.use('/api/v1/finance', financeRouter);
-  app.use('/api/v1/exams', examsRouter);
-  app.use('/api/v1/campus', campusRouter);
-  app.use('/api/v1/reports', reportsRouter);
+  // Mount Domain Routers (on both /api/v1 and root fallback for client resilience)
+  const mountDomainRouters = (prefix: string) => {
+    app.use(`${prefix}/public`, publicRouter);
+    app.use(`${prefix}/webhooks`, webhooksRouter);
+    app.use(`${prefix}/auth`, authRouter);
+    app.use(`${prefix}/rbac`, rbacRouter);
+    app.use(`${prefix}/org`, orgRouter);
+    app.use(`${prefix}/notifications`, notificationsRouter);
+    app.use(`${prefix}/academics`, academicsRouter);
+    app.use(`${prefix}/admissions`, admissionsRouter);
+    app.use(`${prefix}/attendance`, attendanceRouter);
+    app.use(`${prefix}/hr`, hrRouter);
+    app.use(`${prefix}/finance`, financeRouter);
+    app.use(`${prefix}/exams`, examsRouter);
+    app.use(`${prefix}/campus`, campusRouter);
+    app.use(`${prefix}/reports`, reportsRouter);
+  };
+
+  mountDomainRouters('/api/v1');
+  mountDomainRouters('');
 
   app.use((req, _res, next) => {
     next(new AppError(404, ERROR_CODES.NOT_FOUND, `Route not found: ${req.method} ${req.originalUrl}`));
