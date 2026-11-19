@@ -199,8 +199,8 @@ export const TimetableView = () => {
                             background: cell.isLab
                               ? 'rgba(53, 135, 164, 0.16)'
                               : cell.isActivity
-                              ? 'rgba(45, 137, 139, 0.12)'
-                              : 'transparent',
+                                ? 'rgba(45, 137, 139, 0.12)'
+                                : 'transparent',
                             color: cell.label === '—' ? 'var(--text-muted)' : 'var(--text-primary)',
                             borderLeft: '1px solid var(--border-subtle)',
                             borderRight: '1px solid var(--border-subtle)'
@@ -237,8 +237,8 @@ export const TimetableView = () => {
                             background: cell.isLab
                               ? 'rgba(53, 135, 164, 0.16)'
                               : cell.isActivity
-                              ? 'rgba(45, 137, 139, 0.12)'
-                              : 'transparent',
+                                ? 'rgba(45, 137, 139, 0.12)'
+                                : 'transparent',
                             color: cell.label === '—' ? 'var(--text-muted)' : 'var(--text-primary)',
                             borderLeft: '1px solid var(--border-subtle)',
                             borderRight: '1px solid var(--border-subtle)'
