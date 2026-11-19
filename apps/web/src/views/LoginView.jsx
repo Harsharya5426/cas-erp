@@ -260,7 +260,7 @@ export const LoginView = ({ onOpenPublicPortal }) => {
             <strong style={{ display: 'block', fontSize: '0.82rem', marginBottom: '2px', color: 'var(--warning)' }}>
               Security Notice
             </strong>
-            Do not use your official or personal email passwords to log in to this website. Use only your designated CAS ERP portal credentials (e.g., demo password: <code style={{ fontFamily: 'var(--font-mono)', fontWeight: 700 }}>CasErp@2026!</code>).
+            Do not use your official or personal email passwords to log in to this website. Use only your designated CAS ERP portal credentials.
           </div>
         </div>
 

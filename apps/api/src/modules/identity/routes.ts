@@ -38,10 +38,11 @@ import {
 const REFRESH_COOKIE_NAME = 'cas_refresh_token';
 
 function getRefreshCookieOptions() {
+  const isProd = env.NODE_ENV === 'production';
   return {
     httpOnly: true,
-    sameSite: 'lax' as const,
-    secure: env.COOKIE_SECURE,
+    sameSite: (isProd ? 'none' : 'lax') as 'none' | 'lax',
+    secure: isProd ? true : env.COOKIE_SECURE,
     path: '/api/v1/auth'
   };
 }
